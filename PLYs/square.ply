@@ -1,0 +1,19 @@
+ply
+format ascii 1.0
+comment made by anonymous
+comment this file is a cube
+element vertex 6
+property float32 x
+property float32 y
+property float32 z
+element face 1
+property list uint8 int32 vertex_index
+end_header
+1 1 0
+1 -1 0
+-1 1 0
+1 -1 0
+-1 -1 0
+-1 1 0
+6 0 1 2 3 4 5
+
