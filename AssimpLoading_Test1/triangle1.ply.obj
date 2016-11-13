@@ -1,0 +1,19 @@
+# File produced by Open Asset Import Library (http://www.assimp.sf.net)
+# (assimp v3.0.1262)
+
+mtllib triangle1.ply.obj.mtl
+
+# 3 vertex positions
+v  0.5 0.5 0
+v  0.5 -0.5 0
+v  -0.5 0.5 0
+
+# 0 UV coordinates
+
+# 0 vertex normals
+
+# Mesh '' with 1 faces
+g 
+usemtl $Material_0
+f  1// 2// 3//
+

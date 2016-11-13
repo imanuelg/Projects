@@ -1,0 +1,22 @@
+# File produced by Open Asset Import Library (http://www.assimp.sf.net)
+# (assimp v3.0.1262)
+
+mtllib rectangle.ply.obj.mtl
+
+# 6 vertex positions
+v  1.5 1 0
+v  1.5 -1 0
+v  -1 1 0
+v  1.5 -1 0
+v  -1 -1 0
+v  -1 1 0
+
+# 0 UV coordinates
+
+# 0 vertex normals
+
+# Mesh '' with 1 faces
+g 
+usemtl $Material_0
+f  1// 2// 3// 4// 5// 6//
+
