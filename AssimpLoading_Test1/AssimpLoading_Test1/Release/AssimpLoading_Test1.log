@@ -1,0 +1,10 @@
+﻿  stdafx.cpp
+  AssimpLoading_Test1.cpp
+AssimpLoading_Test1.cpp(26): warning C4005: 'GLEW_STATIC': macro redefinition
+  AssimpLoading_Test1.cpp(26): note: command-line arguments:  see previous definition of 'GLEW_STATIC'
+LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
+  Generating code
+  All 172 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+glew32s.lib(glew.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'glew32s.lib(glew.obj)' or at 'C:\University\Projects\AssimpLoading_Test1\Release\vc120.pdb'; linking object as if no debug info
+  AssimpLoading_Test1.vcxproj -> C:\University\Projects\AssimpLoading_Test1\Release\AssimpLoading_Test1.exe
