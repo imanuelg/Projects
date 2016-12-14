@@ -1,0 +1,70 @@
+# 
+# 
+newmtl Body_female
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 0.401600 0.401600 0.401600
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd nanosuit.jpg
+map_Ns nanosuit_spec.jpg
+map_Bump nanosuit_bump.jpg
+map_Ks nanosuit_spec.jpg
+
+
+newmtl Helmet_female
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 0.401600 0.401600 0.401600
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd nanosuit_helmet.jpg
+map_Ns nanosuit_helmet_spec.jpg
+map_Bump nanosuit_helmet_bump.jpg
+map_Ks nanosuit_helmet_spec.jpg
+
+
+newmtl NanoMaskF
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 0.401600 0.401600 0.401600
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd nanosuit_helm_mask.jpg
+map_Ns nanosuit_helm_mask_spec.jpg
+map_Bump nanosuit_helm_mask_bump.jpg
+map_Ks nanosuit_helm_mask_spec.jpg
+
+
+newmtl Neck_female
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 0.401600 0.401600 0.401600
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd nanosuit_neck.jpg
+map_Ns nanosuit_neck_spec.jpg
+map_Bump nanosuit_neck_bump.jpg
+map_Ks nanosuit_neck_spec.jpg
+
+
+newmtl VisirF
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd nanosuit_visir.jpg
+map_Bump nanosuit_visir_bump.jpg
+
+
