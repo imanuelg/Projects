@@ -1,0 +1,4 @@
+﻿  in2gpu_triangle.cpp
+c:\c++\in2gpu_triangle\in2gpu_triangle\in2gpu_triangle\in2gpu_triangle.cpp(8): warning C4005: 'GLEW_STATIC': macro redefinition
+  c:\c++\in2gpu_triangle\in2gpu_triangle\in2gpu_triangle\in2gpu_triangle.cpp(8): note: command-line arguments:  see previous definition of 'GLEW_STATIC'
+  in2gpu_triangle.vcxproj -> C:\C++\in2gpu_triangle\in2gpu_triangle\Debug\in2gpu_triangle.exe
