@@ -49,15 +49,8 @@ int main()
 	// Define the viewport dimensions
 	glViewport(0, 0, WIDTH, HEIGHT);
 
-	//Shader ourShader("C:\\C++\\RoateTriangle2\\RoateTriangle2\\VS.vs", "C:\\C++\\RoateTriangle2\\RoateTriangle2\\FS.frag");
-
-	// Build and compile our shader program
-	Shader ourShader("C:\\C++\\RoateTriangle2\\RoateTriangle2\\red.vs", "C:\\C++\\RoateTriangle2\\RoateTriangle2\\red.frag");
-	// Build and compile our shader program
-	// Vertex shader
-	
-
-	/*
+	Shader ourShader("C:\\C++\\RoateTriangle2\\RoateTriangle2\\Vertex_Shader.vs", "C:\\C++\\RoateTriangle2\\RoateTriangle2\\Fragment_Shader.frag");
+		
 	GLfloat vertices[] = {
 		// Positions          // Colors          
 		0.5f,  0.5f, 0.0f,    1.0f, 0.0f, 0.0f,    // Top Right
@@ -65,98 +58,7 @@ int main()
 		-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,    // Bottom Left
 		-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f     // Top Left 
 	};
-
-
-	// Set up vertex data (and buffer(s)) and attribute pointers
-	GLuint indices[] = {  // Note that we start from 0!
-		0, 1, 3, // First Triangle
-		1, 2, 3  // Second Triangle
-	};
-	GLuint VBO, VAO, EBO;
-	glGenVertexArrays(1, &VAO);
-	glGenBuffers(1, &VBO);
-	glGenBuffers(1, &EBO);
-
-	glBindVertexArray(VAO);
-
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-
-	// Position attribute
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)0);
-	glEnableVertexAttribArray(0);
-	// Color attribute
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
-	glEnableVertexAttribArray(1);
 	
-
-	glBindVertexArray(0); // Unbind VAO
-
-
-
-
-	while (!glfwWindowShouldClose(window))
-	{
-
-		glfwPollEvents();
-
-		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
-
-		ourShader.Use();
-
-		// Create transformations
-		glm::mat4 transform;
-		transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
-		transform = glm::rotate(transform, (GLfloat)glfwGetTime() * 1.0f, glm::vec3(0.0f, 1.0f, 0.0f));  // multiply by 1 but if want faster, increase value
-																										 // Get matrix's uniform location and set matrix
-		GLint transformLoc = glGetUniformLocation(ourShader.Program, "transform");
-		glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
-
-		//glfwSwapInterval(1);
-
-
-		glBindVertexArray(VAO);
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-		glBindVertexArray(0);
-
-
-
-
-		// Swap the screen buffers
-		glfwSwapBuffers(window);
-
-	}
-
-	glDeleteVertexArrays(1, &VAO);
-	glDeleteBuffers(1, &VBO);
-	glDeleteBuffers(1, &EBO);
-
-	// Terminate GLFW, clearing any resources allocated by GLFW.
-	glfwTerminate();
-	return 0;
-	*/
-
-	
-	GLfloat vertices[] = {
-		0.5f,  0.5f, 0.0f,  // Top Right
-		0.5f, -0.5f, 0.0f,  // Bottom Right
-		-0.5f, -0.5f, 0.0f,  // Bottom Left
-		-0.5f,  0.5f, 0.0f   // Top Left 
-	};
-	
-		/*
-	GLfloat vertices[] = {
-		// Positions          // Colors          
-		0.5f,  0.5f, 0.0f,    1.0f, 0.0f, 0.0f,    // Top Right
-		0.5f, -0.5f, 0.0f,    0.0f, 1.0f, 0.0f,    // Bottom Right
-		-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,    // Bottom Left
-		-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f     // Top Left 
-	};
-	*/
 
 	GLuint indices[] = {  // Note that we start from 0!
 		0, 1, 3,  // First Triangle
@@ -177,15 +79,14 @@ int main()
 
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
 	glEnableVertexAttribArray(0);
-
-	/*
+	
 	// Position attribute
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
 	glEnableVertexAttribArray(0);
 	// Color attribute
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
 	glEnableVertexAttribArray(1);
-	*/
+	
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0); // Note that this is allowed, the call to glVertexAttribPointer registered VBO as the currently bound vertex buffer object so afterwards we can safely unbind
 
