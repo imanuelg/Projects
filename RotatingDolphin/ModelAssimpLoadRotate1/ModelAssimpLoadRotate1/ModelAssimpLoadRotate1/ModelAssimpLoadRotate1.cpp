@@ -1,0 +1,226 @@
+// ModelAssimpLoadRotate1.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+// Std. Includes
+#include <string>
+
+// GLEW
+#define GLEW_STATIC
+#include <GL/glew.h>
+
+// GLFW
+#include <GLFW/glfw3.h>
+
+// GL includes
+#include "Shader.h"
+#include "Camera.h"
+#include "Model.h"
+
+// GLM Mathemtics
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
+// Other Libs
+#include <SOIL.h>
+
+// Properties
+GLuint screenWidth = 2500, screenHeight = 2000;
+
+// Function prototypes
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
+void mouse_callback(GLFWwindow* window, double xpos, double ypos);
+void Do_Movement();
+
+// Camera
+Camera camera(glm::vec3(5.0f, 5.0f, 5.0f));
+bool keys[1024];
+GLfloat lastX = 400, lastY = 300;
+bool firstMouse = true;
+
+GLfloat deltaTime = 0.0f;
+GLfloat lastFrame = 0.0f;
+
+// The MAIN function, from here we start our application and run our Game loop
+int main()
+{
+	// Init GLFW
+	glfwInit();
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+
+	GLFWwindow* window = glfwCreateWindow(screenWidth, screenHeight, "LearnOpenGL", nullptr, nullptr); // Windowed
+	glfwMakeContextCurrent(window);
+
+	// Set the required callback functions
+	glfwSetKeyCallback(window, key_callback);
+	glfwSetCursorPosCallback(window, mouse_callback);
+	glfwSetScrollCallback(window, scroll_callback);
+
+	// Options
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
+	// Initialize GLEW to setup the OpenGL Function pointers
+	glewExperimental = GL_TRUE;
+	glewInit();
+
+	// Define the viewport dimensions
+	glViewport(0, 0, screenWidth, screenHeight);
+
+	// Setup some OpenGL options
+	glEnable(GL_DEPTH_TEST);
+
+	// Setup and compile our shaders
+	//Shader shader("C:\\C++\\RoateTriangle2\\RoateTriangle2\\model_loading.vs", "C:\\C++\\RoateTriangle2\\RoateTriangle2\\model_loading.frag");
+	Shader shader("C:\\C++\\AmiAssimpRecursion\\AmiAssimpRecursion\\Debug\\NanoSuit_Female\\NanoSuit_Female\\model_loading.vs", "C:\\C++\\AmiAssimpRecursion\\AmiAssimpRecursion\\Debug\\NanoSuit_Female\\NanoSuit_Female\\model_loading.frag");
+
+
+	// Load models
+	Model ourModel("C:\\C++\\Dolphin\\DOLPHIN.OBJ");
+
+
+	// Draw in wireframe
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);  // look like a net if uncommented, else full
+
+
+	// Game loop
+	while (!glfwWindowShouldClose(window))
+	{
+		// Set frame time
+		GLfloat currentFrame = glfwGetTime();
+		deltaTime = currentFrame - lastFrame;
+		lastFrame = currentFrame;
+
+		// Check and call events
+		glfwPollEvents();
+		Do_Movement();
+
+		// Clear the colorbuffer
+		//glClearColor(0.05f, 0.05f, 0.05f, 1.0f);  // black background
+		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+		shader.Use();   // <-- Don't forget this one!
+						// Transformation matrices
+		
+		
+		glm::mat4 projection = glm::perspective(camera.Zoom, (float)screenWidth / (float)screenHeight, 0.1f, 100.0f);
+		glm::mat4 view = camera.GetViewMatrix();
+		glUniformMatrix4fv(glGetUniformLocation(shader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+		glUniformMatrix4fv(glGetUniformLocation(shader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
+		
+
+
+
+
+		/*new
+		glm::mat4 transform;
+		transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
+		transform = glm::rotate(transform, (GLfloat)glfwGetTime() * 1.0f, glm::vec3(0.0f, 1.0f, 0.0f));
+		GLint transformLoc = glGetUniformLocation(shader.Program, "transform");
+		glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+		*/
+
+
+		/*
+		// Draw the loaded model
+		glm::mat4 model;
+		//model = glm::translate(model, glm::vec3(2.0f, 2.0f, 0.0f));
+		//model = glm::scale(model, glm::vec3(6.0f, 2.0f, 4.5f));	// It's a bit too big for our scene, so scale it down
+
+
+		model = glm::translate(model, glm::vec3(4.0f, 4.0f, 4.0f)); // Translate it down a bit so it's at the center of the scene
+		*/
+
+		glm::mat4 model = glm::mat4(2.0f);
+		//model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+
+		//model = glm::translate(model, glm::vec3(2.0f, 5.5f, 2.0f));
+		model = glm::translate(model, glm::vec3(4.5f, 5.0f, 3.0f));
+		
+
+		model = glm::rotate(model, (GLfloat)glfwGetTime() * 1.0f, glm::vec3(0.0f, 1.0f, 0.0f));
+		GLint transformLoc = glGetUniformLocation(shader.Program, "transform");
+		glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+
+
+
+		ourModel.Draw(shader);
+
+		// Swap the buffers
+		glfwSwapBuffers(window);
+
+		// Check for any input, or window movement
+		//glfwPollEvents();  // Ami
+	}
+	
+
+
+
+	
+
+	glfwTerminate();
+	return 0;
+}
+
+#pragma region "User input"
+
+// Moves/alters the camera positions based on user input
+void Do_Movement()
+{
+	// Camera controls
+	if (keys[GLFW_KEY_W])
+		camera.ProcessKeyboard(FORWARD, deltaTime);
+	if (keys[GLFW_KEY_S])
+		camera.ProcessKeyboard(BACKWARD, deltaTime);
+	if (keys[GLFW_KEY_A])  // Ami : was D
+		camera.ProcessKeyboard(RIGHT, deltaTime);
+	if (keys[GLFW_KEY_D])  // Ami : was A
+		camera.ProcessKeyboard(LEFT, deltaTime);
+}
+
+// Is called whenever a key is pressed/released via GLFW
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
+{
+	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+		glfwSetWindowShouldClose(window, GL_TRUE);
+
+	if (action == GLFW_PRESS)
+		keys[key] = true;
+	else if (action == GLFW_RELEASE)
+		keys[key] = false;
+}
+
+void mouse_callback(GLFWwindow* window, double xpos, double ypos)
+{
+	if (firstMouse)
+	{
+		lastX = xpos;
+		lastY = ypos;
+		firstMouse = false;
+	}
+
+	// GLfloat xoffset = xpos - lastX;
+	// GLfloat yoffset = lastY - ypos;
+	GLfloat xoffset = lastX - xpos; // Ami
+	GLfloat yoffset = ypos - lastY; // Ami
+
+	lastX = xpos;
+	lastY = ypos;
+
+	camera.ProcessMouseMovement(xoffset, yoffset);
+}
+
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+{
+	camera.ProcessMouseScroll(yoffset);
+}
+
+#pragma endregion
+
+
+

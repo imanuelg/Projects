@@ -1,0 +1,23 @@
+﻿  ModelAssimpLoadRotate1.cpp
+c:\c++\modelassimploadrotate1\modelassimploadrotate1\modelassimploadrotate1\modelassimploadrotate1.cpp(9): warning C4005: 'GLEW_STATIC': macro redefinition
+  c:\c++\modelassimploadrotate1\modelassimploadrotate1\modelassimploadrotate1\modelassimploadrotate1.cpp(9): note: command-line arguments:  see previous definition of 'GLEW_STATIC'
+c:\c++\modelassimploadrotate1\modelassimploadrotate1\modelassimploadrotate1\model.h(126): warning C4244: 'argument': conversion from 'float' to 'const unsigned int', possible loss of data
+c:\c++\modelassimploadrotate1\modelassimploadrotate1\modelassimploadrotate1\model.h(127): warning C4244: 'argument': conversion from 'float' to 'const unsigned int', possible loss of data
+c:\c++\modelassimploadrotate1\modelassimploadrotate1\modelassimploadrotate1\model.h(128): warning C4244: 'argument': conversion from 'float' to 'const unsigned int', possible loss of data
+c:\c++\modelassimploadrotate1\modelassimploadrotate1\modelassimploadrotate1\modelassimploadrotate1.cpp(94): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\c++\modelassimploadrotate1\modelassimploadrotate1\modelassimploadrotate1\modelassimploadrotate1.cpp(202): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\c++\modelassimploadrotate1\modelassimploadrotate1\modelassimploadrotate1\modelassimploadrotate1.cpp(203): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\c++\modelassimploadrotate1\modelassimploadrotate1\modelassimploadrotate1\modelassimploadrotate1.cpp(209): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\c++\modelassimploadrotate1\modelassimploadrotate1\modelassimploadrotate1\modelassimploadrotate1.cpp(210): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\c++\modelassimploadrotate1\modelassimploadrotate1\modelassimploadrotate1\modelassimploadrotate1.cpp(212): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\c++\modelassimploadrotate1\modelassimploadrotate1\modelassimploadrotate1\modelassimploadrotate1.cpp(213): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\c++\modelassimploadrotate1\modelassimploadrotate1\modelassimploadrotate1\modelassimploadrotate1.cpp(220): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+  SOIL.lib(SOIL.obj) : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
+LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/LTCG' specification
+ModelAssimpLoadRotate1.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:LBR' specification
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
+  Generating code
+  Finished generating code
+glew32s.lib(glew.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'glew32s.lib(glew.obj)' or at 'C:\C++\ModelAssimpLoadRotate1\ModelAssimpLoadRotate1\Debug\vc120.pdb'; linking object as if no debug info
+  ModelAssimpLoadRotate1.vcxproj -> C:\C++\ModelAssimpLoadRotate1\ModelAssimpLoadRotate1\Debug\ModelAssimpLoadRotate1.exe
